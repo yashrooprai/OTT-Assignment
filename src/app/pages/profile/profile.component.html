@@ -1,0 +1,24 @@
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <!-- Profile Picture -->
+    <div class="text-center mt-4">
+      <img src="/assets/user.png" alt="Profile Picture" class="profile-picture" style="max-width: 100px; max-height: 100px;">
+    </div>
+  
+    <!-- Email Address -->
+    <div class="text-center mt-3">
+      <h4 style="color: white;">{{ email }}</h4>
+    </div>
+  
+    <div class="mt-4" style="color: white;">
+      <h5>Select Your Favorite Genres</h5>
+      <div class="form-check" *ngFor="let genre of genres">
+        <input class="form-check-input" type="checkbox" id="{{ genre.id }}" [value]="genre.id" (change)="updateSelectedGenres(genre.id)" [checked]="savedGenres.includes(genre.id)">
+        <label class="form-check-label" for="{{ genre.id }}">
+          {{ genre.name }}
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" (click)="saveSelectedGenres()">Update</button>
+
+  </div>
+  
