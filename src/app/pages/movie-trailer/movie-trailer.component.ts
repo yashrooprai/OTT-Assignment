@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-trailer',
@@ -10,12 +10,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MovieTrailerComponent implements OnInit {
   trailerKey: string = '';
   videoUrl: SafeResourceUrl | undefined;
-
+  
   constructor(
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
-  ) {}
-
+    private sanitizer: DomSanitizer,
+    private title:Title
+  ) {this.title.setTitle('Watch Trailer')}
+    
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.trailerKey = params['key'];
