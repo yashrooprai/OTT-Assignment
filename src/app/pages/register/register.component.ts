@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       password: this.password,
       
     };
-    this.http.post(environment.db,data).subscribe((response) => console.log(response))
+    this.http.post(environment.db,data)
     this.auth.register(this.email,this.password);
     
     this.email = '';

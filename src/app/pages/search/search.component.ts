@@ -19,9 +19,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchResult:any;
-  // searchForm = new FormGroup({
-  //   'movieName':new FormControl(null)
-  // });
+ 
   searchForm = new FormGroup({
     'movieName': new FormControl(null),
     'genre': new FormControl(''),
@@ -30,19 +28,12 @@ export class SearchComponent implements OnInit {
 
 submitForm() {
     const searchData = this.searchForm.value;
-    console.log(searchData, 'searchform#');
+
     this.service.getSearchMovie(searchData).subscribe((result) => {
-        console.log(result, 'searchmovie##');
+        
         this.searchResult = result.results;
     });
 }
-  // submitForm()
-  // {
-  //     console.log(this.searchForm.value,'searchform#');
-  //     this.service.getSearchMovie(this.searchForm.value).subscribe((result)=>{
-  //         console.log(result,'searchmovie##');
-  //         this.searchResult = result.results;
-  //     });
-  // }
+  
 
 }

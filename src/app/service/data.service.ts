@@ -25,7 +25,7 @@ export class DataService {
 
   getMoviesByPreferences(savedPreferences: number[]): Observable<any> {
     const genresMapping = new Map<number, number>([
-      [1, 28], // Map your app's genre IDs to TMDB genre IDs
+      [1, 28], 
       [2, 12],
       [3, 16],
       [4, 35],
@@ -33,13 +33,13 @@ export class DataService {
       [6, 53],
       [7, 878],
       
-      // Add more mappings...
+      
     ]);
   
-    // Get TMDB genre IDs based on saved preferences
+   
     const tmdbGenres = savedPreferences.map(prefId => genresMapping.get(prefId)).filter(Boolean);
     const apiKey = environment.tmdbApi
-    // Build the API URL with the TMDB genre IDs
+   
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${tmdbGenres.join(',')}`;
   
     return this.http.get(apiUrl)

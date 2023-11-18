@@ -44,14 +44,13 @@ export class HomeComponent implements OnInit {
   // bannerdata
   bannerData() {
     this.service.bannerApiData().subscribe((result) => {
-      console.log(result, 'bannerresult#');
+      
       this.bannerResult = result.results;
     });
   }
 
   trendingData() {
     this.service.trendingMovieApiData().subscribe((result) => {
-      console.log(result, 'trendingresult#');
       this.trendingMovieResult = result.results;
       // this.trendingMovieResult
     });
@@ -59,7 +58,6 @@ export class HomeComponent implements OnInit {
 
   forYou(){
     this.dataService.getMoviesByPreferences(this.dataService.savedPreference).subscribe((result) => {
-      console.log(result, 'trendingresult#');
       this.forYouMovies = result.results;
       // this.trendingMovieResult
     });

@@ -16,13 +16,11 @@ export class AuthService {
     this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
       localStorage.setItem('token', 'true');
 
-      // if (res.user?.emailVerified == true) {
-      console.log('done')
+
+
       this.isLoggedIn = true
       this.router.navigate(['/home']);
-      // } else {
-      //   this.router.navigate(['/login']);
-      // }
+
 
     }, err => {
       alert(err.message);
@@ -43,7 +41,7 @@ export class AuthService {
   // sign out
   logout() {
     this.fireauth.signOut().then(() => {
-      console.log("Logging out UWU")
+
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
     }, err => {
@@ -53,14 +51,14 @@ export class AuthService {
 
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
-      console.log(res)
+
       this.router.navigate(['/home']);
       this.isLoggedIn = true
       localStorage.setItem('token', JSON.stringify(res.user?.uid));
-      if(res.user?.email){
+      if (res.user?.email) {
         this.dataService.email = res.user?.email
       }
-      
+
     }, err => {
       alert(err.message);
     })

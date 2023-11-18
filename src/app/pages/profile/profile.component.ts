@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
     this.title.setTitle("Profile")
   }
 
-  savedGenres: number[] = []; // Array to store the user's saved genres
+  savedGenres: number[] = []; 
   email = this.dataService.email
   genres = this.dataService.genres
 
@@ -41,9 +41,9 @@ export class ProfileComponent implements OnInit {
   }
 
   saveSelectedGenres() {
-    // Save the selected genres
+    
     this.saveGenresToLocalStorage();
-    // Additional logic to send the savedGenres to your backend (Firebase, API, etc.)
+    
   }
 
   saveGenresToLocalStorage() {
